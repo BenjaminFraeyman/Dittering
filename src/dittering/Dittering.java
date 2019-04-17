@@ -27,5 +27,7 @@ public class Dittering/* extends JFrame*/{
         image.openAFile();
         image.showImage();
         image.setVisible(true);
+        
+        image.saveAFile("tmp/test", "test.jpg");
     }
 }
