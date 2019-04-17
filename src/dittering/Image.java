@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package dittering;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -27,14 +28,6 @@ public class Image extends JFrame{
     
     public void showImage(){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-//        JFileChooser chooser= new JFileChooser();
-//        chooser.showOpenDialog(null);
-//        File chosenFile = chooser.getSelectedFile();
-//        try {
-//          bi = ImageIO.read(chosenFile);
-//        } catch (Exception e) {
-//          e.printStackTrace();
-//        }
         setSize(bi.getWidth(), bi.getHeight());
     }
 
@@ -47,21 +40,6 @@ public class Image extends JFrame{
         } catch (Exception e) {
           e.printStackTrace();
         }
-        
-//        JFileChooser chooser= new JFileChooser();
-//        chooser.showOpenDialog(null);
-//        File chosenFile = chooser.getSelectedFile();
-//        BufferedImage img = null;
-//        try {
-//            img = ImageIO.read(chosenFile);
-//            System.out.println(chosenFile.getAbsolutePath());
-//            System.out.println(chosenFile.getPath());
-//            
-//            File outputfile = new File("test.jpg");
-//            ImageIO.write(img, "jpg", outputfile);
-//        } catch (IOException e) {
-//            System.out.println("Could not create file");
-//        }
     }
        
     private void createAFile(String dir, String name){
@@ -94,4 +72,18 @@ public class Image extends JFrame{
     public void paint(Graphics g) {
         g.drawImage(bi, 0, 0, getWidth(), getHeight(), this);
     }    
+    
+    private int selectRGBfromPixel(String rgb, int x, int y){
+        Color c = new Color(bi.getRGB(x, y));
+        switch(rgb){
+            case "r":
+                return c.getRed();
+            case "g":
+                return c.getGreen();
+            case "b":
+                return c.getBlue();
+            default:
+                return 0;
+        }
+    }
 }
