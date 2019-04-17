@@ -77,14 +77,15 @@ public class Image extends JFrame{
         }
     }    
     
-    private void saveAFile(String dir, String name){
+    public void saveAFile(String dir, String name){
         try {
             //File dir = new File("tmp/test");
             File file = new File(dir);
             file.mkdirs();
-            //File tmp = new File(file, "tmp.txt");
+            //File tmp = new File(file, "tmp.jpg");
             File tmp = new File(file, name);
             tmp.createNewFile();
+            ImageIO.write(bi, "jpg", tmp);
         } catch (IOException e) {
             System.out.println("Could not create file");
         }
